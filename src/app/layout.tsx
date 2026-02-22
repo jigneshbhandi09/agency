@@ -11,7 +11,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Vanguard | Premium Digital Agency",
+  title: "Magnetiq | Premium Digital Agency",
   description: "A premium modern wrapper for data entry, copywriting, graphic design, and web development.",
 };
 

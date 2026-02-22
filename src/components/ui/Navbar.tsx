@@ -41,11 +41,11 @@ export function Navbar() {
                 >
                     {/* Logo */}
                     <Link href="/" className="flex items-center gap-2 group">
-                        <div className="flex h-10 w-10 items-center justify-center rounded-full bg-primary/10 dark:bg-primary/20 transition-transform group-hover:scale-110">
-                            <Rocket size={20} className="text-indigo-500" />
+                        <div className="flex h-10 w-10 items-center justify-center rounded-full bg-white text-black transition-transform group-hover:scale-110 shadow-[0_0_15px_rgba(255,255,255,0.3)]">
+                            <Rocket size={20} className="text-black" />
                         </div>
                         <span className="text-2xl font-extrabold tracking-tighter text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 via-violet-500 to-indigo-500">
-                            Vanguard
+                            Magnetiq
                         </span>
                     </Link>
 
@@ -64,7 +64,7 @@ export function Navbar() {
                             <ThemeToggle />
                             <a
                                 href="#contact"
-                                className="rounded-full bg-primary px-6 py-2.5 text-sm font-bold text-primary-foreground transition-all hover:bg-primary/90 hover:shadow-[0_0_20px_rgba(99,102,241,0.4)]"
+                                className="rounded-full bg-gradient-to-r from-violet-600 to-indigo-600 px-6 py-2.5 text-sm font-bold text-white transition-all hover:from-violet-500 hover:to-indigo-500 hover:shadow-[0_0_20px_rgba(99,102,241,0.4)]"
                             >
                                 Let&apos;s Talk
                             </a>

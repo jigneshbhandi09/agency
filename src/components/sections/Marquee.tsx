@@ -10,8 +10,8 @@ export function Marquee() {
     return (
         <section className="relative w-full overflow-hidden bg-background py-16 border-y border-white/5">
             {/* Fade Edges */}
-            <div className="absolute left-0 top-0 z-10 h-full w-[100px] bg-gradient-to-r from-[#000000] to-transparent pointer-events-none" />
-            <div className="absolute right-0 top-0 z-10 h-full w-[100px] bg-gradient-to-l from-[#000000] to-transparent pointer-events-none" />
+            <div className="absolute left-0 top-0 z-10 h-full w-[100px] bg-gradient-to-r from-background to-transparent pointer-events-none" />
+            <div className="absolute right-0 top-0 z-10 h-full w-[100px] bg-gradient-to-l from-background to-transparent pointer-events-none" />
 
             <motion.div
                 className="flex w-max items-center gap-24 pr-24"

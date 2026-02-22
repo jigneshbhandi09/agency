@@ -62,7 +62,7 @@ export function Hero() {
                     </a>
                     <a
                         href="#contact"
-                        className="group relative inline-flex items-center justify-center gap-2 overflow-hidden rounded-full bg-white px-8 py-4 text-base font-bold text-black transition-all hover:bg-neutral-200"
+                        className="group relative inline-flex items-center justify-center gap-2 overflow-hidden rounded-full bg-gradient-to-r from-violet-600 to-indigo-600 px-8 py-4 text-base font-bold text-white transition-all hover:from-violet-500 hover:to-indigo-500 hover:shadow-[0_0_30px_rgba(99,102,241,0.4)]"
                     >
                         <span className="relative z-10 flex items-center gap-2">
                             Book a Discovery Call <ArrowRight size={18} className="transition-transform group-hover:translate-x-1" />

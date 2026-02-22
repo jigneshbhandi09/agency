@@ -5,7 +5,7 @@ import Image from "next/image";
 
 export function About() {
     return (
-        <section id="about" className="relative py-32 overflow-hidden bg-[#000000] border-t border-white/5">
+        <section id="about" className="relative py-32 overflow-hidden bg-background border-t border-white/5">
             <div className="container mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="grid lg:grid-cols-2 gap-16 items-center">
 
@@ -17,7 +17,7 @@ export function About() {
                         transition={{ duration: 0.6 }}
                         className="relative"
                     >
-                        <div className="relative h-[500px] w-full rounded-3xl overflow-hidden border border-white/10 bg-[#09090b] shadow-2xl ring-1 ring-white/5">
+                        <div className="relative h-[500px] w-full rounded-3xl overflow-hidden border border-white/10 bg-white/[0.02] shadow-2xl ring-1 ring-white/5">
                             <Image
                                 src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=2670&auto=format&fit=crop"
                                 alt="Agency Team Collaboration"
@@ -57,25 +57,25 @@ export function About() {
 
                         <div className="grid sm:grid-cols-2 gap-6 mt-10">
                             {/* Value 1 */}
-                            <div className="flex flex-col gap-3 p-6 rounded-2xl border border-white/10 bg-[#09090b] shadow-2xl transition-all hover:bg-white/[0.02]">
+                            <div className="flex flex-col gap-3 p-6 rounded-2xl border border-white/10 bg-white/[0.02] shadow-2xl transition-all hover:bg-white/[0.05]">
                                 <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-white text-black font-extrabold shadow-[0_0_20px_rgba(255,255,255,0.3)]">1</span>
                                 <h4 className="font-bold text-white text-lg tracking-tight">Elite Talent</h4>
                                 <p className="text-sm text-muted-foreground leading-relaxed">We rigorously recruit and retain only the top 1% of digital specialists globally.</p>
                             </div>
                             {/* Value 2 */}
-                            <div className="flex flex-col gap-3 p-6 rounded-2xl border border-white/10 bg-[#09090b] shadow-2xl transition-all hover:bg-white/[0.02]">
+                            <div className="flex flex-col gap-3 p-6 rounded-2xl border border-white/10 bg-white/[0.02] shadow-2xl transition-all hover:bg-white/[0.05]">
                                 <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-white text-black font-extrabold shadow-[0_0_20px_rgba(255,255,255,0.3)]">2</span>
                                 <h4 className="font-bold text-white text-lg tracking-tight">Rapid Execution</h4>
                                 <p className="text-sm text-muted-foreground leading-relaxed">Delivering uncompromising, pixel-perfect quality at aggressive startup speeds.</p>
                             </div>
                             {/* Value 3 */}
-                            <div className="flex flex-col gap-3 p-6 rounded-2xl border border-white/10 bg-[#09090b] shadow-2xl transition-all hover:bg-white/[0.02]">
+                            <div className="flex flex-col gap-3 p-6 rounded-2xl border border-white/10 bg-white/[0.02] shadow-2xl transition-all hover:bg-white/[0.05]">
                                 <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-white text-black font-extrabold shadow-[0_0_20px_rgba(255,255,255,0.3)]">3</span>
                                 <h4 className="font-bold text-white text-lg tracking-tight">Data-Driven Strategy</h4>
                                 <p className="text-sm text-muted-foreground leading-relaxed">Every design and copy decision is backed by rigorous analytics and testing.</p>
                             </div>
                             {/* Value 4 */}
-                            <div className="flex flex-col gap-3 p-6 rounded-2xl border border-white/10 bg-[#09090b] shadow-2xl transition-all hover:bg-white/[0.02]">
+                            <div className="flex flex-col gap-3 p-6 rounded-2xl border border-white/10 bg-white/[0.02] shadow-2xl transition-all hover:bg-white/[0.05]">
                                 <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-white text-black font-extrabold shadow-[0_0_20px_rgba(255,255,255,0.3)]">4</span>
                                 <h4 className="font-bold text-white text-lg tracking-tight">Flawless Delivery</h4>
                                 <p className="text-sm text-muted-foreground leading-relaxed">Zero bugs, pristine code, and seamless handoffs—guaranteed every time.</p>

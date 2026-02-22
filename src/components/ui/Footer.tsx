@@ -7,11 +7,11 @@ export function Footer() {
                 <div className="grid gap-12 lg:grid-cols-4">
                     <div className="lg:col-span-2">
                         <a href="#" className="mb-6 flex items-center gap-2">
-                            <div className="flex h-10 w-10 items-center justify-center rounded-full bg-primary/20">
-                                <Rocket size={20} className="text-primary" />
+                            <div className="flex h-10 w-10 items-center justify-center rounded-full bg-white text-black shadow-[0_0_15px_rgba(255,255,255,0.3)]">
+                                <Rocket size={20} className="text-black" />
                             </div>
-                            <span className="text-2xl font-bold tracking-tight text-foreground">
-                                Vanguard
+                            <span className="text-2xl font-extrabold tracking-tighter text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 via-violet-500 to-indigo-500">
+                                Magnetiq
                             </span>
                         </a>
                         <p className="max-w-md text-muted-foreground">
@@ -46,7 +46,7 @@ export function Footer() {
                 </div>
 
                 <div className="mt-16 flex flex-col items-center justify-between gap-4 border-t border-black/10 dark:border-white/10 pt-8 sm:flex-row text-sm text-muted-foreground">
-                    <p>© {new Date().getFullYear()} Vanguard Digital Agency. All rights reserved.</p>
+                    <p>© {new Date().getFullYear()} Magnetiq Digital Agency. All rights reserved.</p>
                     <div className="flex gap-6">
                         <a href="#" className="hover:text-foreground transition-colors">Privacy Policy</a>
                         <a href="#" className="hover:text-foreground transition-colors">Terms of Service</a>

@@ -46,7 +46,7 @@ export function Projects() {
     const [activeTab, setActiveTab] = useState(0);
 
     return (
-        <section id="work" className="relative py-32 bg-[#000000] border-t border-white/5 overflow-hidden">
+        <section id="work" className="relative py-32 bg-background border-t border-white/5 overflow-hidden">
             {/* Ambient Top Glow */}
             <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-3xl h-[400px] bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-white/[0.03] via-transparent to-transparent pointer-events-none" />
 
@@ -114,7 +114,7 @@ export function Projects() {
                     </div>
 
                     {/* Right Side: Content */}
-                    <div className="lg:col-span-8 relative rounded-3xl overflow-hidden bg-[#09090b] border border-white/10 shadow-2xl group ring-1 ring-white/5 ring-inset">
+                    <div className="lg:col-span-8 relative rounded-3xl overflow-hidden bg-white/[0.02] border border-white/10 shadow-2xl group ring-1 ring-white/5 ring-inset">
                         <AnimatePresence mode="wait">
                             <motion.div
                                 key={activeTab}
@@ -135,7 +135,7 @@ export function Projects() {
                                         sizes="(max-width: 1024px) 100vw, 66vw"
                                         priority
                                     />
-                                    <div className="absolute inset-0 z-0 bg-gradient-to-t from-[#09090b] via-[#09090b]/80 to-transparent" />
+                                    <div className="absolute inset-0 z-0 bg-gradient-to-t from-background via-background/80 to-transparent" />
                                 </div>
 
                                 {/* Content Overlay */}
@@ -152,7 +152,7 @@ export function Projects() {
                                     <div className="flex flex-wrap items-center gap-4">
                                         <Link
                                             href={`/work/${projects[activeTab].slug}`}
-                                            className="group relative inline-flex items-center justify-center gap-2 overflow-hidden rounded-full bg-primary px-6 py-3 text-sm font-bold text-primary-foreground transition-all hover:bg-primary/90 hover:shadow-[0_0_30px_rgba(99,102,241,0.4)]"
+                                            className="group relative inline-flex items-center justify-center gap-2 overflow-hidden rounded-full bg-gradient-to-r from-violet-600 to-indigo-600 px-6 py-3 text-sm font-bold text-white transition-all hover:from-violet-500 hover:to-indigo-500 hover:shadow-[0_0_30px_rgba(99,102,241,0.4)]"
                                         >
                                             View Case Study <ArrowUpRight size={16} />
                                         </Link>

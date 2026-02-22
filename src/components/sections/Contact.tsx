@@ -77,7 +77,7 @@ export function Contact() {
                         whileInView={{ opacity: 1, x: 0 }}
                         viewport={{ once: true }}
                         transition={{ duration: 0.5, delay: 0.2 }}
-                        className="rounded-3xl border border-white/10 bg-[#09090b] p-8 sm:p-12 shadow-2xl relative"
+                        className="rounded-3xl border border-white/10 bg-white/[0.02] p-8 sm:p-12 shadow-2xl relative"
                     >
                         <form className="flex flex-col gap-6" onSubmit={(e) => { e.preventDefault(); alert('In a production app, this would send an email!'); }}>
                             <div className="grid gap-6 sm:grid-cols-2">
@@ -129,7 +129,7 @@ export function Contact() {
                                             animate={{ opacity: 1, y: 0 }}
                                             exit={{ opacity: 0, y: -10 }}
                                             transition={{ duration: 0.2 }}
-                                            className="absolute top-[calc(100%+8px)] left-0 w-full rounded-xl border border-white/10 bg-black/90 backdrop-blur-3xl p-2 shadow-2xl z-[100]"
+                                            className="absolute top-[calc(100%+8px)] left-0 w-full rounded-xl border border-white/10 bg-background/95 backdrop-blur-3xl p-2 shadow-2xl z-[100]"
                                         >
                                             {serviceOptions.map((option) => (
                                                 <button

@@ -55,7 +55,7 @@ const services = [
 
 export function Services() {
     return (
-        <section id="services" className="relative py-32 bg-[#000000] border-t border-white/5 overflow-hidden">
+        <section id="services" className="relative py-32 bg-background border-t border-white/5 overflow-hidden">
             <div className="container mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="mb-16">
                     <motion.div
@@ -84,7 +84,7 @@ export function Services() {
                         >
                             <Link
                                 href={`/services/${service.slug}`}
-                                className="group relative flex flex-col h-full overflow-hidden rounded-2xl bg-[#09090b] shadow-2xl ring-1 ring-white/10 transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_20px_40px_rgba(99,102,241,0.15)] hover:ring-indigo-500/40"
+                                className="group relative flex flex-col h-full overflow-hidden rounded-2xl bg-white/[0.02] shadow-2xl ring-1 ring-white/10 transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_20px_40px_rgba(99,102,241,0.15)] hover:ring-indigo-500/40"
                             >
                                 {/* Spotlight Gradient */}
                                 <div className="absolute inset-0 bg-gradient-to-br from-white/[0.04] via-transparent to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100 pointer-events-none" />
@@ -100,7 +100,7 @@ export function Services() {
                                     />
                                 </div>
 
-                                <div className="p-6 flex-1 flex flex-col relative z-10 transition-colors duration-300 bg-[#09090b]">
+                                <div className="p-6 flex-1 flex flex-col relative z-10 transition-colors duration-300 bg-transparent">
                                     <div className="flex justify-between items-start mb-6 mt-[-40px]">
                                         <span className="text-[10px] font-bold uppercase tracking-widest px-3 py-1.5 rounded-sm bg-black text-white shadow-xl border border-white/10 z-20">
                                             {service.category}
