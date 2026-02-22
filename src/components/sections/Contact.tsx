@@ -56,7 +56,7 @@ export function Contact() {
                                 </div>
                                 <div>
                                     <p className="text-sm font-medium text-muted-foreground">Drop us a line</p>
-                                    <a href="mailto:hello@vanguardagency.com" className="text-lg font-semibold text-foreground hover:text-primary transition-colors">hello@vanguardagency.com</a>
+                                    <a href="mailto:jigneshbhandi2023@gmail.com" className="text-lg font-semibold text-foreground hover:text-primary transition-colors">jigneshbhandi2023@gmail.com</a>
                                 </div>
                             </div>
 
@@ -66,7 +66,7 @@ export function Contact() {
                                 </div>
                                 <div>
                                     <p className="text-sm font-medium text-muted-foreground">Give us a call</p>
-                                    <p className="text-lg font-semibold text-foreground">+1 (555) 123-4567</p>
+                                    <p className="text-lg font-semibold text-foreground">+91 8104803669</p>
                                 </div>
                             </div>
                         </div>
@@ -86,7 +86,7 @@ export function Contact() {
                                     <input
                                         type="text"
                                         id="name"
-                                        placeholder="Jane Doe"
+                                        placeholder="Jignesh Bhandi"
                                         className="rounded-xl border border-white/10 bg-background px-4 py-3 text-foreground placeholder:text-muted-foreground focus:border-white/30 focus:outline-none focus:ring-1 focus:ring-white/30 transition-colors"
                                         required
                                     />
@@ -96,7 +96,7 @@ export function Contact() {
                                     <input
                                         type="email"
                                         id="email"
-                                        placeholder="jane@company.com"
+                                        placeholder="jigneshbhandi2023@gmail.com"
                                         className="rounded-xl border border-white/10 bg-background px-4 py-3 text-foreground placeholder:text-muted-foreground focus:border-white/30 focus:outline-none focus:ring-1 focus:ring-white/30 transition-colors"
                                         required
                                     />

@@ -131,7 +131,7 @@ export function Projects() {
                                         src={projects[activeTab].image}
                                         alt={projects[activeTab].title}
                                         fill
-                                        className="object-cover transition-transform duration-700 ease-out group-hover:scale-105 opacity-60 mix-blend-luminosity hover:mix-blend-normal"
+                                        className="object-cover transition-transform duration-700 ease-out group-hover:scale-105 opacity-60 md:mix-blend-luminosity hover:mix-blend-normal"
                                         sizes="(max-width: 1024px) 100vw, 66vw"
                                         priority
                                     />

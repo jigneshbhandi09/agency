@@ -41,10 +41,10 @@ export function Navbar() {
                 >
                     {/* Logo */}
                     <Link href="/" className="flex items-center gap-2 group">
-                        <div className="flex h-10 w-10 items-center justify-center rounded-full bg-primary/10 dark:bg-primary/20 text-primary transition-transform group-hover:scale-110">
-                            <Rocket size={20} className="text-primary" />
+                        <div className="flex h-10 w-10 items-center justify-center rounded-full bg-primary/10 dark:bg-primary/20 transition-transform group-hover:scale-110">
+                            <Rocket size={20} className="text-indigo-500" />
                         </div>
-                        <span className="text-xl font-bold tracking-tight text-foreground">
+                        <span className="text-2xl font-extrabold tracking-tighter text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 via-violet-500 to-indigo-500">
                             Vanguard
                         </span>
                     </Link>

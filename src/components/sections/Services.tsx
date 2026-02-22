@@ -95,7 +95,7 @@ export function Services() {
                                         src={service.image}
                                         alt={service.title}
                                         fill
-                                        className="object-cover transition-transform duration-700 ease-out group-hover:scale-105 mix-blend-luminosity hover:mix-blend-normal opacity-80"
+                                        className="object-cover transition-transform duration-700 ease-out group-hover:scale-105 md:mix-blend-luminosity hover:mix-blend-normal opacity-80"
                                         sizes="(max-width: 768px) 100vw, 33vw"
                                     />
                                 </div>
