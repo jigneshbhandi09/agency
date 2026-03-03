@@ -1,9 +1,10 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
+import { useRef } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { section } from "framer-motion/client";
+import { Star } from "lucide-react";
 
 const services = [
     {
@@ -54,10 +55,16 @@ const services = [
 ];
 
 export function Services() {
+    const targetRef = useRef<HTMLDivElement>(null);
+    const { scrollYProgress } = useScroll({ target: targetRef });
+
+    // Map the 0-1 vertical scroll progress to 0% -> -80% horizontal translation
+    const x = useTransform(scrollYProgress, [0, 1], ["0%", "-80%"]);
+
     return (
-        <section id="services" className="relative py-32 bg-background border-t border-white/5 overflow-hidden">
-            <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-                <div className="mb-16">
+        <section ref={targetRef} id="services" className="relative h-[300vh] bg-background border-t border-white/5">
+            <div className="sticky top-0 flex h-screen flex-col justify-center overflow-hidden">
+                <div className="container mx-auto px-4 sm:px-6 lg:px-8 mb-8 shrink-0">
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
@@ -73,14 +80,15 @@ export function Services() {
                     </motion.div>
                 </div>
 
-                <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+                <motion.div style={{ x }} className="flex gap-8 px-4 sm:px-6 lg:px-8 w-[max-content]">
                     {services.map((service, index) => (
                         <motion.div
                             key={service.slug}
-                            initial={{ opacity: 0, y: 60 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true, margin: "-100px" }}
-                            transition={{ duration: 0.8, delay: index * 0.15, ease: [0.16, 1, 0.3, 1] }}
+                            initial={{ opacity: 0, scale: 0.9 }}
+                            whileInView={{ opacity: 1, scale: 1 }}
+                            viewport={{ once: true, margin: "-50px" }}
+                            transition={{ duration: 0.6, delay: index * 0.1, ease: "easeOut" }}
+                            className="w-[85vw] sm:w-[450px] shrink-0"
                         >
                             <Link
                                 href={`/services/${service.slug}`}
@@ -90,7 +98,7 @@ export function Services() {
                                 <div className="absolute inset-0 bg-gradient-to-br from-white/[0.04] via-transparent to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100 pointer-events-none" />
 
                                 {/* Realistic Thumbnail */}
-                                <div className="relative h-48 w-full overflow-hidden border-b border-white/5">
+                                <div className="relative h-56 w-full overflow-hidden border-b border-white/5">
                                     <Image
                                         src={service.image}
                                         alt={service.title}
@@ -98,38 +106,37 @@ export function Services() {
                                         className="object-cover transition-transform duration-700 ease-out group-hover:scale-105 md:mix-blend-luminosity hover:mix-blend-normal opacity-80"
                                         sizes="(max-width: 768px) 100vw, 33vw"
                                     />
+                                    <div className="absolute top-4 left-4 rounded-full border border-white/20 bg-black/60 backdrop-blur-md px-3 py-1 text-xs font-semibold text-white">
+                                        {service.category}
+                                    </div>
                                 </div>
 
-                                <div className="p-6 flex-1 flex flex-col relative z-10 transition-colors duration-300 bg-transparent">
-                                    <div className="flex justify-between items-start mb-6 mt-[-40px]">
-                                        <span className="text-[10px] font-bold uppercase tracking-widest px-3 py-1.5 rounded-sm bg-black text-white shadow-xl border border-white/10 z-20">
-                                            {service.category}
-                                        </span>
+                                {/* Content */}
+                                <div className="p-8 flex-1 flex flex-col relative z-10 transition-colors duration-300 bg-transparent">
+                                    <div className="flex items-start justify-between gap-4 mb-4">
+                                        <h3 className="text-xl font-bold text-foreground group-hover:text-indigo-400 transition-colors">
+                                            {service.title}
+                                        </h3>
                                     </div>
-                                    <h3 className="mb-3 text-xl font-bold text-white/90 group-hover:text-white transition-colors line-clamp-2">
-                                        {service.title}
-                                    </h3>
-                                    <p className="text-sm text-muted-foreground leading-relaxed flex-1 line-clamp-3 mb-6 font-medium">
+
+                                    <p className="text-muted-foreground text-sm leading-relaxed mb-6 flex-1">
                                         {service.description}
                                     </p>
 
-                                    {/* Bottom Meta mimicking premium Fiverr/Upwork Enterprise */}
-                                    <div className="mt-auto pt-6 border-t border-white/10 flex items-center justify-between text-sm">
-                                        <div className="flex items-center gap-1 text-white/90 font-bold tracking-tight">
-                                            <span className="text-indigo-400">★</span> {service.rating}
+                                    <div className="flex items-center justify-between mt-auto pt-6 border-t border-white/5">
+                                        <div className="flex items-center gap-1.5 border border-indigo-500/20 bg-indigo-500/10 px-2.5 py-1 rounded-full">
+                                            <Star className="text-indigo-400 fill-indigo-400" size={12} />
+                                            <span className="text-xs font-medium text-indigo-300">{service.rating}</span>
                                         </div>
-                                        <div className="flex flex-col items-end">
-                                            <span className="text-[10px] uppercase font-bold tracking-widest text-white/50">Starting At</span>
-                                            <span className="font-extrabold text-white text-base">
-                                                {service.price}
-                                            </span>
-                                        </div>
+                                        <span className="font-bold text-white text-lg">
+                                            {service.price}
+                                        </span>
                                     </div>
                                 </div>
                             </Link>
                         </motion.div>
                     ))}
-                </div>
+                </motion.div>
             </div>
         </section >
     );

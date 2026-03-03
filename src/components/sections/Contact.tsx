@@ -25,13 +25,14 @@ export function Contact() {
     const rotateX = useTransform(scrollYProgress, [0, 1], [15, 0]);
     const y = useTransform(scrollYProgress, [0, 1], [100, 0]);
     const opacity = useTransform(scrollYProgress, [0, 1], [0, 1]);
+    const scale = useTransform(scrollYProgress, [0, 1], [0.9, 1]);
 
     return (
         <section ref={containerRef} id="contact" className="relative py-32 overflow-hidden bg-background [perspective:2000px]">
 
             <div className="container mx-auto px-4 sm:px-6 lg:px-8">
                 <motion.div
-                    style={{ rotateX, y, opacity }}
+                    style={{ rotateX, y, opacity, scale }}
                     className="grid gap-16 lg:grid-cols-2 lg:items-center"
                 >
 

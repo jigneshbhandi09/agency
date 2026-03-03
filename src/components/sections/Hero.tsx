@@ -1,9 +1,21 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 import { ArrowRight, Sparkles } from "lucide-react";
 
 export function Hero() {
+    const { scrollY } = useScroll();
+
+    // Scroll-linked text effects
+    const textOpacity = useTransform(scrollY, [0, 300], [1, 0]);
+    const textScale = useTransform(scrollY, [0, 300], [1, 0.9]);
+    const textY = useTransform(scrollY, [0, 400], [0, 150]);
+
+    // Scroll-linked parallax depth for shapes
+    const shape1Y = useTransform(scrollY, [0, 600], [0, -150]);
+    const shape2Y = useTransform(scrollY, [0, 600], [0, -250]);
+    const shape3Y = useTransform(scrollY, [0, 600], [0, -100]);
+
     return (
         <section className="relative min-h-[100vh] bg-background pt-40 pb-20 overflow-hidden flex items-center justify-center">
             {/* Vibrant Ambient Glow Background */}
@@ -18,7 +30,11 @@ export function Hero() {
             {/* Subtle grid on top of ambient glow */}
             <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:32px_32px] pointer-events-none" />
 
-            <div className="container relative z-10 mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center text-center">
+            {/* Scroll mapping wrapper for the entire text block */}
+            <motion.div
+                className="container relative z-10 mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center text-center"
+                style={{ opacity: textOpacity, scale: textScale, y: textY }}
+            >
                 <motion.div
                     initial={{ opacity: 0, y: 40 }}
                     animate={{ opacity: 1, y: 0 }}
@@ -69,56 +85,62 @@ export function Hero() {
                         </span>
                     </a>
                 </motion.div>
-            </div>
+            </motion.div>
 
-            {/* 3D Floating Geometry Elements */}
-            <motion.div
-                className="absolute left-[-5%] lg:left-[5%] top-[10%] w-48 h-48 md:w-64 md:h-64 rounded-full z-0 opacity-80"
-                style={{
-                    background: "radial-gradient(circle at 30% 30%, rgba(99, 102, 241, 0.8), rgba(67, 56, 202, 0.2), transparent)",
-                    boxShadow: "inset -10px -10px 20px rgba(0,0,0,0.5), 0 20px 40px rgba(99, 102, 241, 0.3)",
-                    backdropFilter: "blur(10px)"
-                }}
-                animate={{
-                    y: [0, -40, 0],
-                    x: [0, 30, 0],
-                    rotate: [0, 15, -15, 0],
-                    scale: [1, 1.1, 1]
-                }}
-                transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-            />
+            {/* Parallax Wrappers for 3D Floating Geometry Elements */}
+            <motion.div style={{ y: shape1Y }} className="absolute inset-0 pointer-events-none z-0">
+                <motion.div
+                    className="absolute left-[-5%] lg:left-[5%] top-[10%] w-48 h-48 md:w-64 md:h-64 rounded-full opacity-80"
+                    style={{
+                        background: "radial-gradient(circle at 30% 30%, rgba(99, 102, 241, 0.8), rgba(67, 56, 202, 0.2), transparent)",
+                        boxShadow: "inset -10px -10px 20px rgba(0,0,0,0.5), 0 20px 40px rgba(99, 102, 241, 0.3)",
+                        backdropFilter: "blur(10px)"
+                    }}
+                    animate={{
+                        y: [0, -40, 0],
+                        x: [0, 30, 0],
+                        rotate: [0, 15, -15, 0],
+                        scale: [1, 1.1, 1]
+                    }}
+                    transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+                />
+            </motion.div>
 
-            <motion.div
-                className="absolute right-[-10%] lg:right-[10%] top-[20%] w-40 h-40 md:w-56 md:h-56 rounded-2xl z-0 opacity-70"
-                style={{
-                    background: "linear-gradient(135deg, rgba(168, 85, 247, 0.6) 0%, rgba(126, 34, 206, 0.1) 100%)",
-                    boxShadow: "inset 2px 2px 10px rgba(255,255,255,0.2), inset -5px -5px 15px rgba(0,0,0,0.4), 0 15px 30px rgba(168, 85, 247, 0.2)",
-                    backdropFilter: "blur(8px)",
-                    transformStyle: "preserve-3d"
-                }}
-                animate={{
-                    y: [0, 50, 0],
-                    rotateX: [20, 50, 20],
-                    rotateY: [-20, 20, -20],
-                    rotateZ: [10, 40, 10]
-                }}
-                transition={{ duration: 10, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-            />
+            <motion.div style={{ y: shape2Y }} className="absolute inset-0 pointer-events-none z-0">
+                <motion.div
+                    className="absolute right-[-10%] lg:right-[10%] top-[20%] w-40 h-40 md:w-56 md:h-56 rounded-2xl opacity-70"
+                    style={{
+                        background: "linear-gradient(135deg, rgba(168, 85, 247, 0.6) 0%, rgba(126, 34, 206, 0.1) 100%)",
+                        boxShadow: "inset 2px 2px 10px rgba(255,255,255,0.2), inset -5px -5px 15px rgba(0,0,0,0.4), 0 15px 30px rgba(168, 85, 247, 0.2)",
+                        backdropFilter: "blur(8px)",
+                        transformStyle: "preserve-3d"
+                    }}
+                    animate={{
+                        y: [0, 50, 0],
+                        rotateX: [20, 50, 20],
+                        rotateY: [-20, 20, -20],
+                        rotateZ: [10, 40, 10]
+                    }}
+                    transition={{ duration: 10, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+                />
+            </motion.div>
 
-            <motion.div
-                className="absolute right-[20%] bottom-[-5%] md:bottom-[10%] w-56 h-56 md:w-80 md:h-80 rounded-full z-0 opacity-50 hidden md:block"
-                style={{
-                    background: "radial-gradient(circle at 70% 30%, rgba(139, 92, 246, 0.5), transparent)",
-                    boxShadow: "inset 10px 10px 30px rgba(0,0,0,0.3), 0 30px 60px rgba(139, 92, 246, 0.1)",
-                    filter: "blur(4px)"
-                }}
-                animate={{
-                    y: [0, -30, 0],
-                    x: [0, -20, 0],
-                    scale: [1, 1.15, 1]
-                }}
-                transition={{ duration: 12, repeat: Infinity, ease: "easeInOut", delay: 2 }}
-            />
+            <motion.div style={{ y: shape3Y }} className="absolute inset-0 pointer-events-none z-0 hidden md:block">
+                <motion.div
+                    className="absolute right-[20%] bottom-[-5%] md:bottom-[10%] w-56 h-56 md:w-80 md:h-80 rounded-full opacity-50"
+                    style={{
+                        background: "radial-gradient(circle at 70% 30%, rgba(139, 92, 246, 0.5), transparent)",
+                        boxShadow: "inset 10px 10px 30px rgba(0,0,0,0.3), 0 30px 60px rgba(139, 92, 246, 0.1)",
+                        filter: "blur(4px)"
+                    }}
+                    animate={{
+                        y: [0, -30, 0],
+                        x: [0, -20, 0],
+                        scale: [1, 1.15, 1]
+                    }}
+                    transition={{ duration: 12, repeat: Infinity, ease: "easeInOut", delay: 2 }}
+                />
+            </motion.div>
         </section>
     );
 }

@@ -7,7 +7,7 @@ export function About() {
     return (
         <section id="about" className="relative py-32 overflow-hidden bg-background border-t border-white/5">
             <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-                <div className="grid lg:grid-cols-2 gap-16 items-center">
+                <div className="grid lg:grid-cols-2 gap-16 items-start relative">
 
                     {/* Left Side: Image / Visual */}
                     <motion.div
@@ -15,7 +15,7 @@ export function About() {
                         whileInView={{ opacity: 1, x: 0 }}
                         viewport={{ once: true }}
                         transition={{ duration: 0.6 }}
-                        className="relative"
+                        className="relative lg:sticky lg:top-32"
                     >
                         <div className="relative h-[500px] w-full rounded-3xl overflow-hidden border border-white/10 bg-white/[0.02] shadow-2xl ring-1 ring-white/5">
                             <Image

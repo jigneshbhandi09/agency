@@ -1,7 +1,7 @@
 "use client";
 
-import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { useState, useRef } from "react";
+import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion";
 import { ArrowUpRight, ChevronRight } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
@@ -44,9 +44,21 @@ const projects = [
 
 export function Projects() {
     const [activeTab, setActiveTab] = useState(0);
+    const sectionRef = useRef<HTMLElement>(null);
+    const { scrollYProgress } = useScroll({
+        target: sectionRef,
+        offset: ["start end", "end start"]
+    });
+
+    // Parallax logic for active project image scrubbing
+    const imageY = useTransform(scrollYProgress, [0, 1], ["-15%", "15%"]);
+
+    // Title scroll reveal
+    const headingOpacity = useTransform(scrollYProgress, [0.1, 0.4], [0, 1]);
+    const headingY = useTransform(scrollYProgress, [0.1, 0.4], [60, 0]);
 
     return (
-        <section id="work" className="relative py-32 bg-background border-t border-white/5 overflow-hidden">
+        <section ref={sectionRef} id="work" className="relative py-32 bg-background border-t border-white/5 overflow-hidden">
             {/* Ambient Top Glow */}
             <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-3xl h-[400px] bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-white/[0.03] via-transparent to-transparent pointer-events-none" />
 
@@ -54,10 +66,7 @@ export function Projects() {
                 {/* Header */}
                 <div className="mb-16 flex flex-col md:flex-row md:items-end justify-between gap-8">
                     <motion.div
-                        initial={{ opacity: 0, x: -50 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.5 }}
+                        style={{ opacity: headingOpacity, y: headingY }}
                         className="max-w-2xl"
                     >
                         <h2 className="text-3xl font-extrabold tracking-tight text-foreground sm:text-5xl border-b-2 border-primary/20 pb-4 inline-block">
@@ -122,19 +131,21 @@ export function Projects() {
                                 animate={{ opacity: 1, scale: 1 }}
                                 exit={{ opacity: 0, scale: 1.02 }}
                                 transition={{ duration: 0.4, ease: "easeOut" }}
-                                className="relative h-full w-full min-h-[400px] sm:min-h-[500px] flex flex-col"
+                                className="relative h-full w-full min-h-[400px] sm:min-h-[500px] flex flex-col overflow-hidden"
                             >
-                                {/* Image */}
-                                <div className="absolute inset-0 z-0">
+                                {/* Image with Parallax scrub */}
+                                <div className="absolute inset-0 z-0 overflow-hidden">
                                     <div className="absolute inset-0 bg-black/40 z-10 transition-colors duration-500 group-hover:bg-black/20" />
-                                    <Image
-                                        src={projects[activeTab].image}
-                                        alt={projects[activeTab].title}
-                                        fill
-                                        className="object-cover transition-transform duration-700 ease-out group-hover:scale-105 opacity-60 md:mix-blend-luminosity hover:mix-blend-normal"
-                                        sizes="(max-width: 1024px) 100vw, 66vw"
-                                        priority
-                                    />
+                                    <motion.div style={{ y: imageY, height: "130%", top: "-15%" }} className="absolute inset-0 w-full relative">
+                                        <Image
+                                            src={projects[activeTab].image}
+                                            alt={projects[activeTab].title}
+                                            fill
+                                            className="object-cover transition-transform duration-700 ease-out group-hover:scale-105 opacity-60 md:mix-blend-luminosity hover:mix-blend-normal"
+                                            sizes="(max-width: 1024px) 100vw, 66vw"
+                                            priority
+                                        />
+                                    </motion.div>
                                     <div className="absolute inset-0 z-0 bg-gradient-to-t from-background via-background/80 to-transparent" />
                                 </div>
 
